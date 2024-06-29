@@ -1,26 +1,25 @@
 ﻿using AdresAdquisition.Domain.Entities;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
 
 namespace AdresAcquisition.Aplication.Handers.Commands.CrearAdquisicion
 {
     public class CrearAdquisicionCommand : IRequest<Adquisicion>
     {
-        [Required]
+        //[Required]
         public decimal Presupuesto { get; private set; }
-        [Required]
+        //[Required]
         public string Unidad { get; private set; }
-        [Required]
+        //[Required]
         public string TipoBien { get; private set; }
-        [Required]
+        //[Required]
         public int Cantidad { get; private set; }
-        [Required]
+        //[Required]
         public decimal ValorUnitario { get; private set; }
-        [Required]
+        //[Required]
         public DateTime FechaAdquisicion { get; private set; }
-        [Required]
+        //[Required]
         public string Proveedor { get; private set; }
-        [Required]
+        //[Required]
         public string Documentacion { get; private set; }
     }
 }

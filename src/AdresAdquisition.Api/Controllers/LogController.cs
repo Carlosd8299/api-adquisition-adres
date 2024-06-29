@@ -21,7 +21,5 @@ namespace AdresAcquisition.Api.Controllers
         {
             return StatusCode(StatusCodes.Status200OK, await _logHistoricoRepository.Consultar(date));
         }
-
-
     }
 }

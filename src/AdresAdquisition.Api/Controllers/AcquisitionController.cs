@@ -47,7 +47,7 @@ namespace AdresAdquisition.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetById([FromRouteAttribute] int id)
+        public async Task<ActionResult> GetById([FromRoute] int id)
         {
             var result = await _iAdquisicionRepository.ObtenerPorId(id);
 
@@ -83,11 +83,11 @@ namespace AdresAdquisition.Api.Controllers
         }
 
 
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Actualizar([FromRouteAttribute] int id, [FromBody] ActualizarAdquisicionCommand command)
+        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] ActualizarAdquisicionCommand command)
         {
             await Log(command, Events.Actualizar);
             command.Id = id;
@@ -108,7 +108,7 @@ namespace AdresAdquisition.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Eliminar([FromRouteAttribute] int id)
+        public async Task<ActionResult> Delete([FromRoute] int id)
         {
             await Log(id, Events.Desactivar);
             var result = await _iAdquisicionRepository.Desactivar(id);
@@ -118,6 +118,8 @@ namespace AdresAdquisition.Api.Controllers
             return StatusCode(StatusCodes.Status404NotFound);
         }
 
+
+        [NonAction]
         public async Task Log(object command, Events evento)
         {
             await _logHistoricoRepository.Crear(new LogHistorico(JsonSerializer.Serialize(command), "Client", evento));
