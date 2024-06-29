@@ -1,7 +1,11 @@
 ﻿using AdresAcquisition.Aplication.Handers.Commands.CrearAdquisicion;
 using AdresAdquisition.Domain.Interfaces;
+using AdresAdquisition.Infraestructure.Interfaces;
+using AdresAdquisition.Infraestructure.Models;
+using AdresAdquisition.Infraestructure.Models.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace AdresAdquisition.Api.Controllers
 {
@@ -10,11 +14,13 @@ namespace AdresAdquisition.Api.Controllers
     public class AcquisitionController : ControllerBase
     {
         private readonly IAdquisicionRepository _iAdquisicionRepository;
+        private readonly ILogHistoricoRepository _logHistoricoRepository;
         private readonly IMediator _mediator;
 
-        public AcquisitionController(IAdquisicionRepository iAdquisicionRepository, IMediator mediator)
+        public AcquisitionController(IAdquisicionRepository iAdquisicionRepository, ILogHistoricoRepository logHistoricoRepository, IMediator mediator)
         {
             _iAdquisicionRepository = iAdquisicionRepository;
+            _logHistoricoRepository = logHistoricoRepository;
             _mediator = mediator;
         }
 
@@ -62,6 +68,7 @@ namespace AdresAdquisition.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Create([FromBody] CrearAdquisicionCommand command)
         {
+            await Log(command, Events.Crear);
 
             var result = await _mediator.Send(command);
 
@@ -80,8 +87,9 @@ namespace AdresAdquisition.Api.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Create([FromRouteAttribute] int id, [FromBody] ActualizarAdquisicionCommand command)
+        public async Task<ActionResult> Actualizar([FromRouteAttribute] int id, [FromBody] ActualizarAdquisicionCommand command)
         {
+            await Log(command, Events.Actualizar);
             command.Id = id;
             var result = await _mediator.Send(command);
 
@@ -95,5 +103,24 @@ namespace AdresAdquisition.Api.Controllers
             }
         }
 
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Eliminar([FromRouteAttribute] int id)
+        {
+            await Log(id, Events.Desactivar);
+            var result = await _iAdquisicionRepository.Desactivar(id);
+
+            if (result)
+                return StatusCode(StatusCodes.Status200OK);
+            return StatusCode(StatusCodes.Status404NotFound);
+        }
+
+        public async Task Log(object command, Events evento)
+        {
+            await _logHistoricoRepository.Crear(new LogHistorico(JsonSerializer.Serialize(command), "Client", evento));
+        }
     }
 }

@@ -14,14 +14,14 @@ namespace AdresAdquisition.Infraestructure.Repositories
             _adresContext = adresContext;
         }
 
-        public Task<IEnumerable<LogHistorico>> Consultar(DateTime date)
+        public async Task<List<LogHistorico>> Consultar(DateTime date)
         {
-            throw new NotImplementedException();
+            return _adresContext.LogHistoricos.Where(a => a.Date >= date).ToList();
         }
 
-        public Task Crear(LogHistorico log)
+        public async Task Crear(LogHistorico log)
         {
-            throw new NotImplementedException();
+            _adresContext.LogHistoricos.Add(log);
         }
     }
 }
