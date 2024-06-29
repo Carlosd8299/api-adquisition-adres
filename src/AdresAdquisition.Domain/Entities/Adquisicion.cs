@@ -31,7 +31,6 @@ namespace AdresAdquisition.Domain.Entities
 
         public Adquisicion(decimal presupuesto, string unidad, string tipoBien, int cantidad, decimal valorUnitario, DateTime fechaAdquisicion, string proveedor, string documentacion)
         {
-            Id = new Random().Next(0, int.MaxValue);
             Presupuesto = presupuesto;
             Unidad = unidad;
             TipoBien = tipoBien;
@@ -44,17 +43,20 @@ namespace AdresAdquisition.Domain.Entities
             Estado = true;
         }
 
-        public Adquisicion ActualizarProducto(Adquisicion adquisicionAntigua, decimal presupuesto, string unidad, string tipoBien, int cantidad, decimal valorUnitario, DateTime fechaAdquisicion, string proveedor, string documentacion)
+        public Adquisicion ActualizarAdquisicion(Adquisicion adquisicionAntigua, decimal presupuesto, string unidad, string tipoBien, int cantidad, decimal valorUnitario, DateTime fechaAdquisicion, string proveedor, string documentacion)
         {
-            adquisicionAntigua.Presupuesto = presupuesto != default ? presupuesto : adquisicionAntigua.Presupuesto;
-            adquisicionAntigua.Unidad = unidad != default ? unidad : adquisicionAntigua.Unidad;
-            adquisicionAntigua.TipoBien = tipoBien != default ? tipoBien : adquisicionAntigua.TipoBien;
-            adquisicionAntigua.Cantidad = cantidad != default ? cantidad : adquisicionAntigua.Cantidad;
-            adquisicionAntigua.ValorUnitario = valorUnitario != default ? valorUnitario : adquisicionAntigua.ValorUnitario;
-            adquisicionAntigua.FechaAdquisicion = fechaAdquisicion != default ? fechaAdquisicion : adquisicionAntigua.FechaAdquisicion;
-            adquisicionAntigua.Proveedor = proveedor != default ? proveedor : adquisicionAntigua.Proveedor;
-            adquisicionAntigua.Documentacion = documentacion != default ? documentacion : adquisicionAntigua.Documentacion;
-            return adquisicionAntigua;        
+            decimal xPresupuesto = presupuesto != default ? presupuesto : adquisicionAntigua.Presupuesto;
+            string xUnidad = unidad != default ? unidad : adquisicionAntigua.Unidad;
+            string xTipoBien = tipoBien != default ? tipoBien : adquisicionAntigua.TipoBien;
+            int xCantidad = cantidad != default ? cantidad : adquisicionAntigua.Cantidad;
+            decimal xValorUnitario = valorUnitario != default ? valorUnitario : adquisicionAntigua.ValorUnitario;
+            DateTime xFechaAdquisicion = fechaAdquisicion != default ? fechaAdquisicion : adquisicionAntigua.FechaAdquisicion;
+            string xProveedor = proveedor != default ? proveedor : adquisicionAntigua.Proveedor;
+            string xDocumentacion = documentacion != default ? documentacion : adquisicionAntigua.Documentacion;
+
+            var response = new Adquisicion(xPresupuesto, xUnidad, xTipoBien, xCantidad, xValorUnitario, xFechaAdquisicion, xProveedor, xDocumentacion);
+
+            return response;
         }
 
         private void SetValorUnitario(decimal valorUnitario, decimal presupuesto)
@@ -87,5 +89,10 @@ namespace AdresAdquisition.Domain.Entities
         {
             this.Estado = estado;
         }
+
+        //public void SetIdentity(Adquisicion adquisicion)
+        //{
+        //    adquisicion.
+        //}
     }
 }

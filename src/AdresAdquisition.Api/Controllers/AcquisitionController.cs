@@ -1,4 +1,5 @@
-﻿using AdresAcquisition.Aplication.Handers.Commands.CrearAdquisicion;
+﻿using AdresAcquisition.Aplication.Handers.Commands.ActualizarAdquisicion;
+using AdresAcquisition.Aplication.Handers.Commands.CrearAdquisicion;
 using AdresAdquisition.Domain.Interfaces;
 using AdresAdquisition.Infraestructure.Interfaces;
 using AdresAdquisition.Infraestructure.Models;
@@ -73,13 +74,9 @@ namespace AdresAdquisition.Api.Controllers
             var result = await _mediator.Send(command);
 
             if (result is not null)
-            {
                 return StatusCode(StatusCodes.Status201Created, result);
-            }
-            else
-            {
-                return StatusCode(StatusCodes.Status400BadRequest);
-            }
+
+            return StatusCode(StatusCodes.Status400BadRequest);
         }
 
 

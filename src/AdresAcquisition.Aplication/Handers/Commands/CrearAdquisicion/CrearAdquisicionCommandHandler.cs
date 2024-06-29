@@ -4,11 +4,11 @@ using MediatR;
 
 namespace AdresAcquisition.Aplication.Handers.Commands.CrearAdquisicion
 {
-    public class CrearAdquisicionCommandHanlder : IRequestHandler<CrearAdquisicionCommand, Adquisicion>
+    public class CrearAdquisicionCommandHandler : IRequestHandler<CrearAdquisicionCommand, Adquisicion>
     {
         private readonly IAdquisicionRepository _adquisicionRepository;
 
-        public CrearAdquisicionCommandHanlder(IAdquisicionRepository adquisicionRepository)
+        public CrearAdquisicionCommandHandler(IAdquisicionRepository adquisicionRepository)
         {
             _adquisicionRepository = adquisicionRepository;
         }
@@ -17,7 +17,9 @@ namespace AdresAcquisition.Aplication.Handers.Commands.CrearAdquisicion
         {
             Adquisicion adquisicion = new Adquisicion(request.Presupuesto, request.Unidad, request.TipoBien, request.Cantidad, request.ValorUnitario, request.FechaAdquisicion, request.Proveedor, request.Documentacion);
             var response = await _adquisicionRepository.Crear(adquisicion);
-            return response;
+            if (response is not null)
+                return response;
+            return null;
         }
     }
 }
