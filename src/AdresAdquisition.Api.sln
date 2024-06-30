@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdresAcquisition.Api", "AdresAdquisition.Api\AdresAcquisition.Api.csproj", "{E8BA952D-6242-4995-A08C-C66777CCBA0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdresAdquisition.Api", "AdresAdquisition.Api\AdresAdquisition.Api.csproj", "{E8BA952D-6242-4995-A08C-C66777CCBA0B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdresAdquisition.Aplication", "AdresAcquisition.Aplication\AdresAdquisition.Aplication.csproj", "{AD28C15D-E75B-42CD-B14B-9E23FEA91BC7}"
 EndProject
