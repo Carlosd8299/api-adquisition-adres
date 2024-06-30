@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdresAcquisition.Aplication\AdresAcquisition.Aplication.csproj" />
+    <ProjectReference Include="..\AdresAdquisition.Domain\AdresAdquisition.Domain.csproj" />
     <ProjectReference Include="..\AdresAdquisition.Infraestructure\AdresAdquisition.Infraestructure.csproj" />
   </ItemGroup>
 

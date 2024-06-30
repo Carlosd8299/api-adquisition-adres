@@ -5,11 +5,11 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdresAcquisition.Api", "AdresAdquisition.Api\AdresAcquisition.Api.csproj", "{E8BA952D-6242-4995-A08C-C66777CCBA0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdresAdquisition.Domain", "AdresAdquisition.Domain\AdresAdquisition.Domain.csproj", "{8D79A97F-C691-4DBD-A5D0-D043B0BA5EA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdresAcquisition.Aplication", "AdresAcquisition.Aplication\AdresAcquisition.Aplication.csproj", "{AD28C15D-E75B-42CD-B14B-9E23FEA91BC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdresAdquisition.Infraestructure", "AdresAdquisition.Infraestructure\AdresAdquisition.Infraestructure.csproj", "{3B847E87-FEDD-45D4-8882-2877F95F69CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdresAdquisition.Infraestructure", "AdresAdquisition.Infraestructure\AdresAdquisition.Infraestructure.csproj", "{FBFFA9DC-D2EB-4AE7-8FF9-8BF698D5451E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdresAcquisition.Aplication", "AdresAcquisition.Aplication\AdresAcquisition.Aplication.csproj", "{F275E3FE-C2C6-4049-976B-8C38EEB50C19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdresAdquisition.Domain", "AdresAdquisition.Domain\AdresAdquisition.Domain.csproj", "{80E409B8-78A2-48D4-8EAB-E30A6BCF7182}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{E8BA952D-6242-4995-A08C-C66777CCBA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8BA952D-6242-4995-A08C-C66777CCBA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8BA952D-6242-4995-A08C-C66777CCBA0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D79A97F-C691-4DBD-A5D0-D043B0BA5EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D79A97F-C691-4DBD-A5D0-D043B0BA5EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D79A97F-C691-4DBD-A5D0-D043B0BA5EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D79A97F-C691-4DBD-A5D0-D043B0BA5EA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B847E87-FEDD-45D4-8882-2877F95F69CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B847E87-FEDD-45D4-8882-2877F95F69CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B847E87-FEDD-45D4-8882-2877F95F69CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B847E87-FEDD-45D4-8882-2877F95F69CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F275E3FE-C2C6-4049-976B-8C38EEB50C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F275E3FE-C2C6-4049-976B-8C38EEB50C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F275E3FE-C2C6-4049-976B-8C38EEB50C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F275E3FE-C2C6-4049-976B-8C38EEB50C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD28C15D-E75B-42CD-B14B-9E23FEA91BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD28C15D-E75B-42CD-B14B-9E23FEA91BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD28C15D-E75B-42CD-B14B-9E23FEA91BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD28C15D-E75B-42CD-B14B-9E23FEA91BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBFFA9DC-D2EB-4AE7-8FF9-8BF698D5451E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBFFA9DC-D2EB-4AE7-8FF9-8BF698D5451E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBFFA9DC-D2EB-4AE7-8FF9-8BF698D5451E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBFFA9DC-D2EB-4AE7-8FF9-8BF698D5451E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E409B8-78A2-48D4-8EAB-E30A6BCF7182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E409B8-78A2-48D4-8EAB-E30A6BCF7182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E409B8-78A2-48D4-8EAB-E30A6BCF7182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E409B8-78A2-48D4-8EAB-E30A6BCF7182}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
