@@ -35,8 +35,8 @@ namespace AdresAdquisition.Domain.Entities
             Unidad = unidad;
             TipoBien = tipoBien;
             Cantidad = cantidad;
-            SetValorUnitario(valorUnitario, presupuesto);
-            SetValorTotal(valorUnitario, cantidad, presupuesto);
+            ValorUnitario = SetValorUnitario(valorUnitario, presupuesto);
+            ValorTotal = SetValorTotal(valorUnitario, cantidad, presupuesto);
             FechaAdquisicion = fechaAdquisicion;
             Proveedor = proveedor;
             Documentacion = documentacion;
@@ -45,25 +45,23 @@ namespace AdresAdquisition.Domain.Entities
 
         public Adquisicion ActualizarAdquisicion(Adquisicion adquisicionAntigua, decimal presupuesto, string unidad, string tipoBien, int cantidad, decimal valorUnitario, DateTime fechaAdquisicion, string proveedor, string documentacion)
         {
-            decimal xPresupuesto = presupuesto != default ? presupuesto : adquisicionAntigua.Presupuesto;
-            string xUnidad = unidad != default ? unidad : adquisicionAntigua.Unidad;
-            string xTipoBien = tipoBien != default ? tipoBien : adquisicionAntigua.TipoBien;
-            int xCantidad = cantidad != default ? cantidad : adquisicionAntigua.Cantidad;
-            decimal xValorUnitario = valorUnitario != default ? valorUnitario : adquisicionAntigua.ValorUnitario;
-            DateTime xFechaAdquisicion = fechaAdquisicion != default ? fechaAdquisicion : adquisicionAntigua.FechaAdquisicion;
-            string xProveedor = proveedor != default ? proveedor : adquisicionAntigua.Proveedor;
-            string xDocumentacion = documentacion != default ? documentacion : adquisicionAntigua.Documentacion;
-
-            var response = new Adquisicion(xPresupuesto, xUnidad, xTipoBien, xCantidad, xValorUnitario, xFechaAdquisicion, xProveedor, xDocumentacion);
-
-            return response;
+            adquisicionAntigua.Presupuesto = presupuesto != default ? presupuesto : adquisicionAntigua.Presupuesto;
+            adquisicionAntigua.Unidad = unidad != default ? unidad : adquisicionAntigua.Unidad;
+            adquisicionAntigua.TipoBien = tipoBien != default ? tipoBien : adquisicionAntigua.TipoBien;
+            adquisicionAntigua.Cantidad = cantidad != default ? cantidad : adquisicionAntigua.Cantidad;
+            adquisicionAntigua.ValorUnitario = valorUnitario != default ? SetValorUnitario(valorUnitario, presupuesto) : adquisicionAntigua.ValorUnitario;
+            adquisicionAntigua.FechaAdquisicion = fechaAdquisicion != default ? fechaAdquisicion : adquisicionAntigua.FechaAdquisicion;
+            adquisicionAntigua.Proveedor = proveedor != default ? proveedor : adquisicionAntigua.Proveedor;
+            adquisicionAntigua.Documentacion = documentacion != default ? documentacion : adquisicionAntigua.Documentacion;
+            adquisicionAntigua.ValorTotal = SetValorTotal(valorUnitario, cantidad, presupuesto);
+            return adquisicionAntigua;
         }
 
-        private void SetValorUnitario(decimal valorUnitario, decimal presupuesto)
+        private decimal SetValorUnitario(decimal valorUnitario, decimal presupuesto)
         {
             if (valorUnitario <= presupuesto)
             {
-                this.ValorUnitario = valorUnitario;
+                return valorUnitario;
             }
             else
             {
@@ -71,13 +69,13 @@ namespace AdresAdquisition.Domain.Entities
             }
         }
 
-        private void SetValorTotal(decimal valorUnitario, int cantidad, decimal presupuesto)
+        private decimal SetValorTotal(decimal valorUnitario, int cantidad, decimal presupuesto)
         {
             decimal valorTotal = valorUnitario * cantidad;
 
             if (valorTotal <= presupuesto)
             {
-                this.ValorTotal = valorTotal;
+                return valorTotal;
             }
             else
             {
@@ -89,10 +87,5 @@ namespace AdresAdquisition.Domain.Entities
         {
             this.Estado = estado;
         }
-
-        //public void SetIdentity(Adquisicion adquisicion)
-        //{
-        //    adquisicion.
-        //}
     }
 }
